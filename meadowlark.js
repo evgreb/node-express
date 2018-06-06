@@ -1,16 +1,8 @@
 const express = require("express");
+const fortunes = require("./lib/fortune");
 const handlebars = require("express-handlebars").create({
   defaultLayout: "main"
 });
-
-const fortunes = [
-  "Поздравляем! Вы находитесь на верном пути.",
-  "Покорив одну гору, начинай штурмовать другую...",
-  "Прилив энергии поможет Вам справиться с большим объемом незапланированных работ.",
-  "Примите то, что вы не можете изменить, и вы будете чувствовать себя лучше.",
-  "Природа, время и терпение - три великих врача.",
-  "Пришло время действовать!"
-];
 
 const app = express();
 app.engine("handlebars", handlebars.engine);
@@ -25,7 +17,7 @@ app.get("/", function(req, res) {
 });
 
 app.get("/about", function(req, res) {
-  const fortune = fortunes[Math.floor(Math.random() * fortunes.length)];
+  const fortune = fortunes.getFortune();
   res.render("about", { fortune });
 });
 
