@@ -11,6 +11,11 @@ app.set("view engine", "handlebars");
 app.set("port", process.env.PORT || 3000);
 
 app.use(express.static(__dirname + "/public"));
+app.use(function(req, res, next) {
+  const showTests = app.get("env") !== "production" && req.query.test === "1";
+  res.locals.showTests = showTests;
+  next();
+});
 
 app.get("/", function(req, res) {
   res.render("home");
@@ -18,7 +23,15 @@ app.get("/", function(req, res) {
 
 app.get("/about", function(req, res) {
   const fortune = fortunes.getFortune();
-  res.render("about", { fortune });
+  res.render("about", { fortune, pageTestScript: "/qa/tests-about.js" });
+});
+
+app.get("/tours/good-river", function(req, res) {
+  res.render("tours/good-river");
+});
+
+app.get("/tours/request-group-rate", function(req, res) {
+  res.render("tours/request-group-rate");
 });
 
 app.use(function(req, res) {
