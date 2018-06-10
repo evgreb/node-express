@@ -5,7 +5,7 @@
   "main": "meadowlark.js",
   "scripts": {
     "dev": "nodemon meadowlark.js",
-    "test": "mocha qa/bootstrap.js --recursive qa",
+    "test": "mocha --recursive qa",
     "link": "linkcheck http://localhost:3000"
   },
   "author": "e.grebenshchikov",
