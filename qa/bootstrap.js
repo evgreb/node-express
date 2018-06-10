@@ -1,5 +1,5 @@
 const puppeteer = require('puppeteer');
-const { expect } = require('chai');
+const {expect} = require('chai');
 const _ = require('lodash');
 const globalVariables = _.pick(global, ['browser', 'expect']);
 
@@ -7,17 +7,17 @@ const globalVariables = _.pick(global, ['browser', 'expect']);
 const opts = {
   headless: false,
   slowMo: 100,
-  timeout: 10000
+  timeout: 10000,
 };
 
 // expose variables
-before (async function () {
+before(async function() {
   global.expect = expect;
   global.browser = await puppeteer.launch(opts);
 });
 
 // close browser and reset global variables
-after (function () {
+after(function() {
   browser.close();
 
   global.browser = globalVariables.browser;
