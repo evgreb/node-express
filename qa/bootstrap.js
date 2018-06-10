@@ -8,6 +8,7 @@ const opts = {
   headless: false,
   slowMo: 100,
   timeout: 10000,
+  args: ['--no-sandbox'],
 };
 
 // expose variables
