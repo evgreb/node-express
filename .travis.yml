@@ -3,6 +3,9 @@ node_js:
   - "9"
 dist: trusty
 sudo: false  
+cache:
+  directories:
+    - "node_modules"
 addons:
   chrome: stable
 before_install:
