@@ -4,7 +4,7 @@
   "description": "",
   "main": "meadowlark.js",
   "scripts": {
-    "dev": "nodemon meadowlark.js",
+    "start": "nodemon meadowlark.js",
     "test": "mocha qa/bootstrap.js --recursive qa",
     "link": "linkcheck http://localhost:3000"
   },
